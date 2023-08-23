@@ -9,35 +9,41 @@
 
   {{-- Import assets --}}
   @vite('resources/js/app.js')
+
+  <style>
+    main {
+      background-color: yellow;
+    }
+  </style>
 </head>
 
 <body>
-
-  <div class="container d-flex">
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Numero Treno</th>
-          <th scope="col">Stazione di Partenza</th>
-          <th scope="col">Ora di Partenza</th>
-          <th scope="col">Stazione di Arrivo</th>
-          <th scope="col">Ora di Arrivo</th>
-        </tr>
-      </thead>
-      <tbody>
-        @foreach ($trains as $train)
+  <main>
+    <div class="container d-flex">
+      <table class="table table-dark mt-3">
+        <thead>
           <tr>
-            <td>{{ $train->train_code }}</td>
-            <td>{{ $train->departure_station }}</td>
-            <td>{{ $train->getTime($train->departure_time) }}</td>
-            <td>{{ $train->arrival_station }}</td>
-            <td>{{ $train->getTime($train->arrival_time) }}</td>
+            <th scope="col">Numero Treno</th>
+            <th scope="col">Stazione di Partenza</th>
+            <th scope="col">Ora di Partenza</th>
+            <th scope="col">Stazione di Arrivo</th>
+            <th scope="col">Ora di Arrivo</th>
           </tr>
-        @endforeach
-      </tbody>
-    </table>
-
-  </div>
+        </thead>
+        <tbody>
+          @foreach ($trains as $train)
+            <tr>
+              <td>{{ $train->train_code }}</td>
+              <td>{{ $train->departure_station }}</td>
+              <td>{{ $train->getTime($train->departure_time) }}</td>
+              <td>{{ $train->arrival_station }}</td>
+              <td>{{ $train->getTime($train->arrival_time) }}</td>
+            </tr>
+          @endforeach
+        </tbody>
+      </table>
+    </div>
+  </main>
 
 </body>
 
